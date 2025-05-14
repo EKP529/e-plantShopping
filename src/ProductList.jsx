@@ -361,9 +361,15 @@ const ProductList = ({ onHomeClick }) => {
               <div className="product-list">
                 {category.plants.map((plant, index) => (
                   <div key={index} className="product-card">
-                    <img className="product-image" src={plant.image} alt={plant.name} />
+                    <img
+                      className="product-image"
+                      src={plant.image}
+                      alt={plant.name}
+                    />
                     <div className="product-title">{plant.name}</div>
-                    <div className="product-description">{plant.description}</div>
+                    <div className="product-description">
+                      {plant.description}
+                    </div>
                     <div className="product-price">{plant.cost}</div>
                     <button
                       className="product-button"
