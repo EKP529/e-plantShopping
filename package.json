@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://ekp529.github.io/e-plantShopping/",
+  "description": "A shopping cart application built with React and Redux Toolkit.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
