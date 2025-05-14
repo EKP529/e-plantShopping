@@ -1,7 +1,7 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
+import PropTypes from 'prop-types';
 
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
@@ -15,11 +15,10 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleContinueShopping = (e) => {
-    e.onContinueShopping(e)
-  };
+    onContinueShopping(e);  };
 
-  const handlCheckout = (e) => {
-    alert('Functionality to be added for future reference')
+  const handleCheckout = (e) => {
+    alert(`Given Event to Use: ${e}\n\nFunctionality to be added for future reference`)
   }
 
   const handleIncrement = (item) => {
@@ -46,7 +45,6 @@ const CartItem = ({ onContinueShopping }) => {
 
   return (
     <div className="cart-container">
-      <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
       <div>
         {cart.map(item => (
           <div className="cart-item" key={item.name}>
@@ -65,14 +63,19 @@ const CartItem = ({ onContinueShopping }) => {
           </div>
         ))}
       </div>
-      <div style={{ marginTop: '20px', color: 'black' }} className='total_cart_amount'></div>
-      <div className="continue_shopping_btn">
+      <div className='total_cart_amount'>
+        Total Cart Amount: ${calculateTotalAmount()}
+      </div>
+      <div className="cart_container_btns">
         <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
         <br />
-        <button className="get-started-button1" onClick={(e) => handlCheckout(e)}>Checkout</button>
+        <button className="get-started-button" onClick={(e) => handleCheckout(e)}>Checkout</button>
       </div>
     </div>
   );
+};
+CartItem.propTypes = {
+  onContinueShopping: PropTypes.func.isRequired,
 };
 
 export default CartItem;
